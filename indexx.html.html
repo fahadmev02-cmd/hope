@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Your Website Name</title>
+
+  <!-- Basic SEO -->
+  <meta name="description" content="Short description of your website goes here." />
+  <meta name="author" content="Your Name" />
+
+  <!-- Styles -->
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #0f172a;
+      --bg-light: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #111827;
+      --border: #1f2937;
+      --accent: #22c55e;
+      --max-width: 1100px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1f2937, #020617 55%);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.92),
+        rgba(15, 23, 42, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.8);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #60a5fa, #1d4ed8 55%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9),
+        0 10px 25px rgba(37, 99, 235, 0.5);
+    }
+
+    .logo-text-main {
+      font-size: 1rem;
+    }
+
+    .logo-text-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      transition: color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.7);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      font-size: 0.85rem;
+      border: 1px solid rgba(191, 219, 254, 0.2);
+      box-shadow: 0 12px 24px rgba(37, 99, 235, 0.4);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 32px rgba(37, 99, 235, 0.6);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      padding: 40px 18px;
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 40px;
+      padding-bottom: 30px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      background: radial-gradient(circle at top left, #1f2937, #020617 60%);
+    }
+
+    .hero-label-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.2vw + 1rem, 2.9rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #60a5fa, #a855f7, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      max-width: 32rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .hero-badge {
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s,
+        border-color 0.15s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-color: rgba(191, 219, 254, 0.4);
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 38px rgba(37, 99, 235, 0.7);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(55, 65, 81, 0.9);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: #020617;
+      transform: translateY(-1px);
+    }
+
+    .btn-icon {
+      font-size: 1.1rem;
+      margin-left: 2px;
+    }
+
+    .hero-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* Hero Card (Right) */
+
+    .hero-card {
+      background: radial-gradient(circle at 10% 0, #1d4ed8, #020617 55%);
+      border-radius: 26px;
+      padding: 18px 18px 20px;
+      border: 1px solid rgba(37, 99, 235, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 0.78rem;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .hero-pill {
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(191, 219, 254, 0.6);
+      background: rgba(15, 23, 42, 0.6);
+      font-size: 0.7rem;
+    }
+
+    .hero-card-main {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 18px;
+      padding: 16px;
+      border: 1px solid rgba(15, 23, 42, 0.8);
+      margin-bottom: 14px;
+    }
+
+    .hero-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .metric {
+      padding: 7px 9px;
+      border-radius: 12px;
+      background: radial-gradient(circle at top, #1f2937, #020617);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+    }
+
+    .metric-label {
+      font-size: 0.65rem;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .metric-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .metric-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.65rem;
+      margin-top: 3px;
+      color: #4ade80;
+    }
+
+    .metric-tag span {
+      font-size: 1rem;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: rgba(209, 213, 219, 0.9);
+    }
+
+    .hero-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.35);
+      margin-right: 6px;
+    }
+
+    /* Sections */
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      max-width: 34rem;
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .about-text p + p {
+      margin-top: 10px;
+    }
+
+    .about-list {
+      margin-top: 10px;
+      list-style: none;
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .about-list li span {
+      font-size: 1rem;
+    }
+
+    .about-card {
+      background: var(--bg-light);
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .about-card strong {
+      color: var(--text);
+    }
+
+    /* Services */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service-card {
+      background: var(--bg-light);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 16px;
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      cursor: default;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(55, 65, 81, 0.9);
+      box-shadow: 0 18px 30px rgba(15, 23, 42, 0.95);
+    }
+
+    .service-icon {
+      font-size: 1.2rem;
+      margin-bottom: 3px;
+    }
+
+    .service-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .service-body {
+      color: var(--muted);
+    }
+
+    .service-tag {
+      margin-top: 4px;
+      font-size: 0.72rem;
+      color: #a5b4fc;
+    }
+
+    /* Contact */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 24px;
+    }
+
+    .contact-card {
+      background: var(--bg-light);
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .contact-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .contact-form {
+      background: radial-gradient(circle at top, #1f2937, #020617 60%);
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.9);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      font-size: 0.8rem;
+    }
+
+    label {
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 1);
+      border-radius: 10px;
+      padding: 8px 10px;
+      color: var(--text);
+      font: inherit;
+      outline: none;
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.6);
+    }
+
+    .form-note {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .form-submit {
+      margin-top: 10px;
+      display: inline-flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    .form-submit button {
+      width: 100%;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 14px 18px 20px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-links a {
+      padding-bottom: 2px;
+      border-bottom: 1px dashed transparent;
+    }
+
+    .footer-links a:hover {
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .services-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 26px;
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .contact-form {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .section {
+        padding-inline: 14px;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-card {
+        padding: 14px;
+      }
+
+      .service-card {
+        padding: 14px;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+
+      .nav-cta {
+        padding-inline: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-mark">Y</div>
+          <div>
+            <div class="logo-text-main">Your Brand</div>
+            <div class="logo-text-sub">Tagline or niche here</div>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#contact" class="nav-cta">Get in touch</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="home" class="section hero">
+        <div class="section-inner">
+          <div class="hero-grid">
+            <div>
+              <div class="hero-label">
+                <span class="hero-label-dot"></span>
+                <span>Now accepting new clients</span>
+              </div>
+
+              <h1 class="hero-title">
+                Build your <span>modern web presence</span> in one place.
+              </h1>
+
+              <p class="hero-subtitle">
+                Replace this text with your own description. You can explain what
+                you do, who you help, and why visitors should trust or choose
+                you here.
+              </p>
+
+              <div class="hero-badges">
+                <div class="hero-badge">Fast &amp; responsive</div>
+                <div class="hero-badge">Clean modern design</div>
+                <div class="hero-badge">Easy to customise</div>
+              </div>
+
+              <div class="hero-actions">
+                <a href="#contact" class="btn-primary">
+                  Contact now
+                  <span class="btn-icon">↗</span>
+                </a>
+                <a href="#services" class="btn-ghost">
+                  View services
+                  <span class="btn-icon">↓</span>
+                </a>
+              </div>
+
+              <p class="hero-note">
+                Tip: put your strongest benefit or promise here in one sentence.
+              </p>
+            </div>
+
+            <aside class="hero-card" aria-label="Highlight card">
+              <div class="hero-card-header">
+                <div>Dashboard preview</div>
+                <div class="hero-pill">100% editable content</div>
+              </div>
+
+              <div class="hero-card-main">
+                <div class="hero-metric-grid">
+                  <div class="metric">
+                    <div class="metric-label">Projects completed</div>
+                    <div class="metric-value">120+</div>
+                    <div class="metric-tag">
+                      <span>▲</span> Consistently delivered
+                    </div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Client rating</div>
+                    <div class="metric-value">4.9/5</div>
+                    <div class="metric-tag">
+                      <span>★</span> Based on reviews
+                    </div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Response time</div>
+                    <div class="metric-value">&lt; 1 hr</div>
+                    <div class="metric-tag">
+                      <span>⚡</span> Quick support
+                    </div>
+                  </div>
+                </div>
+
+                <p style="font-size: 0.78rem; color: var(--muted); margin-top: 6px;">
+                  You can replace these stats with real data from your work, or
+                  change this card into anything you like (testimonials,
+                  portfolio, pricing, etc.).
+                </p>
+              </div>
+
+              <div class="hero-card-footer">
+                <div style="display: flex; align-items: center;">
+                  <span class="hero-status-dot"></span>
+                  <span>Website template ready to publish</span>
+                </div>
+                <div>HTML • CSS • No frameworks</div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="section">
+        <div class="section-inner">
+          <h2 class="section-title">About you / your brand</h2>
+          <p class="section-subtitle">
+            Tell visitors who you are, what you stand for, and why they should
+            trust you. You can adjust the layout and text to match your style.
+          </p>
+
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                This website template is designed to be simple, fast, and easy to
+                edit. You only need to change the text and links directly in the
+                HTML file to make it your own.
+              </p>
+              <p>
+                You can use it for a personal portfolio, a small business, a
+                startup landing page, or any project where you want a clean,
+                modern look without complex setup.
+              </p>
+
+              <ul class="about-list">
+                <li>
+                  <span>✅</span> 100% static HTML and CSS (perfect for GitHub
+                  Pages)
+                </li>
+                <li>
+                  <span>✅</span> Responsive layout for mobile, tablet, and
+                  desktop
+                </li>
+                <li>
+                  <span>✅</span> Easy sections: Home, About, Services, Contact
+                </li>
+              </ul>
+            </div>
+
+            <div class="about-card">
+              <strong>How to edit this page</strong>
+              <ol style="margin-top: 8px; padding-left: 18px;">
+                <li>Open this file in any text editor (VS Code, Notepad++).</li>
+                <li>Search for text like “Your Brand” and replace it.</li>
+                <li>Update phone, email, and social links in the Contact section.</li>
+                <li>Save it as <code>index.html</code> and upload to GitHub Pages or any hosting.</li>
+              </ol>
+              <p style="margin-top: 10px;">
+                You can also add more sections (FAQ, pricing, gallery) by
+                copying and modifying the existing blocks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="section">
+        <div class="section-inner">
+          <h2 class="section-title">Services / What you offer</h2>
+          <p class="section-subtitle">
+            Change these cards to match your business. Each card can represent a
+            service, package, or feature you provide.
+          </p>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">🚀</div>
+              <div class="service-title">Service One</div>
+              <div class="service-body">
+                Briefly describe your first main service. Explain the result
+                your customer gets, not just the technical work you do.
+              </div>
+              <div class="service-tag">Popular choice</div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">💼</div>
+              <div class="service-title">Service Two</div>
+              <div class="service-body">
+                Use this for your second offer or package. You can also include
+                starting prices or timelines if you want.
+              </div>
+              <div class="service-tag">For businesses</div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">✨</div>
+              <div class="service-title">Service Three</div>
+              <div class="service-body">
+                Add another offer here: consulting, support, maintenance, or a
+                custom service depending on your niche.
+              </div>
+              <div class="service-tag">Custom / flexible</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <div class="section-inner">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">
+            Make it easy for people to reach you. Update your real contact
+            details and connect this form to your email provider or form
+            service if needed.
+          </p>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Contact details</h3>
+              <p>
+                Replace this with your preferred contact method. You can share
+                your business phone, email, or address.
+              </p>
+
+              <div class="contact-row">
+                <div>
+                  <div class="contact-label">Phone</div>
+                  <div class="contact-value">+91-0000000000</div>
+                </div>
+                <div class="contact-label">Call / WhatsApp</div>
+              </div>
+
+              <div class="contact-row">
+                <div>
+                  <div class="contact-label">Email</div>
+                  <div class="contact-value">youremail@example.com</div>
+                </div>
+                <div class="contact-label">Business inquiries</div>
+              </div>
+
+              <div class="contact-row">
+                <div>
+                  <div class="contact-label">Location</div>
+                  <div class="contact-value">Your City, Country</div>
+                </div>
+                <div class="contact-label">Operating globally / locally</div>
+              </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Tell me a bit about what you need..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-note">
+                This form is currently a front-end demo. To receive messages,
+                connect it to a form service (Formspree, Getform, etc.) or your
+                own backend.
+              </div>
+
+              <div class="form-submit">
+                <button type="submit" class="btn-primary">
+                  Send message
+                  <span class="btn-icon">✉</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          © <span id="year"></span> Your Brand. All rights reserved.
+        </div>
+        <div class="footer-links">
+          <a href="#home">Back to top ↑</a>
+          <a href="https://github.com/" target="_blank" rel="noopener">
+            GitHub
+          </a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Minimal JS -->
+  <script>
+    // Auto-set current year in footer
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Simple demo handler for the contact form
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      alert(
+        "This is a demo form. Connect it to a backend or form service to receive messages."
+      );
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
